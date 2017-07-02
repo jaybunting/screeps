@@ -2,8 +2,10 @@ var roleScavanger = {
     run: function(creep) {
     if (creep.carry.energy == 0) {creep.memory.upgrading = false;}
     if ((creep.carry.energy < creep.carryCapacity) && (creep.memory.upgrading == false)) {
-        creep.memory.source = '59538980f728105070060ea4';
-        creep.memory.sourcetype = 'container';
+        if (Game.getObjectById('59538980f728105070060ea4').store.energy > 1000) {
+            creep.memory.source = '59538980f728105070060ea4';
+            creep.memory.sourcetype = 'container';}
+            
         if (creep.memory.source.length < 1) { // if source field of scavanger is blank, do this
            var sources = creep.room.find(FIND_DROPPED_RESOURCES, {
              filter: (dropped_resources) => {
