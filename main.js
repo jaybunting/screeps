@@ -9,7 +9,6 @@ var roleTransport = require('role.transport');
 var roleLongDistanceHarvester = require('role.longdistanceharvester');
 var roleAttacker = require('role.attacker');
 var roleClaimer = require('role.claimer');
-
 var customFunctions = require('customfunctions');
 require('prototype.spawn')();
 var roles = ['harvester','upgrader','miner','builder','scavanger','repairer'];
@@ -94,49 +93,37 @@ module.exports.loop = function () {
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
 
-        if(creep.memory.role == 'harvester') {
-            roleHarvester.run(creep);
-        }
-        if(creep.memory.role == 'upgrader') {
-            try {roleUpgrader.run(creep);} catch(err) {creep.suicide();}
-        }
-        if(creep.memory.role == 'miner') {
-            roleMiner.run(creep);
-        }
-        if(creep.memory.role == 'builder') {
-            roleBuilder.run(creep);
-        }
-        if(creep.memory.role == 'scavanger') {
-            try {
-                roleScavanger.run(creep);
-            } catch(err) {
-                console.log(err);
-            }
-        }
-        if (creep.memory.role == 'repairer') {
-            try {roleRepairer.run(creep);} catch(err) {
-                console.log(err + '\n' + creep);
-            }
-        }
-        if (creep.memory.role == 'transport') {
-            try {roleTransport.run(creep);} catch(err) {
-                console.log(err + '\n' + creep);
-            }
-        }
-        if (creep.memory.role == 'longDistanceHarvester') {
-            try {roleLongDistanceHarvester.run(creep);} catch(err) {
-                console.log(err + '\n' + creep);
-            }
-        }
-        if (creep.memory.role == 'attacker') {
-            try {roleAttacker.run(creep);} catch(err) {
-                console.log(err + '\n' + creep);
-            }
-        }
-        if (creep.memory.role == 'claimer') {
-            try {roleClaimer.run(creep);} catch(err) {
-                console.log(err + '\n' + creep);
-            }
+        switch(creep.memory.role) {
+            case 'harvester':
+                try {roleHarvester.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
+                break;
+            case 'upgrader':
+                try {roleUpgrader.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
+                break;
+            case 'miner':
+                try {roleMiner.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
+                break;
+            case 'builder':
+                try {roleBuilder.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
+                break;
+            case 'scavanger':
+                try {roleScavanger.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
+                break;
+            case 'repairer':
+                try {roleRepairer.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
+                break;
+            case 'transport':
+                try {roleTransport.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
+            case 'longDistanceHarvester':
+                try {roleLongDistanceHarvester.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
+                break;
+            case 'attacker':
+                try {roleAttacker.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
+                break;
+            case 'claimer':
+                try {roleClaimer.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
+                break;
+            default:
         }
     }
-    }
+}
