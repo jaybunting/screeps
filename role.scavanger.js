@@ -6,7 +6,7 @@ var roleScavanger = {
             creep.memory.source = '59538980f728105070060ea4';
             creep.memory.sourcetype = 'container';}
             
-        if (creep.memory.source.length < 1) { // if source field of scavanger is blank, do this
+        if (creep.memory.source.length < 1) {
            var sources = creep.room.find(FIND_DROPPED_RESOURCES, {
              filter: (dropped_resources) => {
                 return (dropped_resources.energy > 2000);
@@ -38,18 +38,36 @@ var roleScavanger = {
                 }
             }
         }
-
-        if (creep.memory.sourcetype == 'dropped_energy') {
-            if (creep.pickup(Game.getObjectById(creep.memory.source)) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(Game.getObjectById(creep.memory.source), {visualizePathStyle: {stroke: '#ffaa00'}});
+            var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
+            if (miners.length < 1) {
+                var sources = creep.room.find(FIND_SOURCES);
+                for (var name in sources) {
+                    var harvesters = _.filter(Game.creeps, (creep) => {return (creep.memory.source == sources[name].id)});
+                    if (harvesters.length < 1) {
+                        creep.memory.source = sources[name].id;
+                        creep.memory.sourcetype = 'source';
+                        break;
+                    }
+                }
             }
-        } else {
-            if (creep.memory.sourcetype == 'container') {
+
+        switch (creep.memory.sourcetype) {
+            case 'dropped_energy':
+                 if (creep.pickup(Game.getObjectById(creep.memory.source)) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(Game.getObjectById(creep.memory.source), {visualizePathStyle: {stroke: '#ffaa00'}});
+                 }
+                break;
+            case 'container':
                 if(creep.withdraw(Game.getObjectById(creep.memory.source), RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                      creep.moveTo(Game.getObjectById(creep.memory.source), {visualizePathStyle: {stroke: '#ffffff'}});
                 }
-            }
+                break;
+            case 'source':
+                if (creep.harvest(Game.getObjectById(creep.memory.source)) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(Game.getObjectById(creep.memory.source), {visualizePathStyle: {stroke: '#ffaa00'}});
+                break;
         }
+
     } else {
         creep.memory.upgrading = true; // Creep is full of energy, time to get to work
         creep.memory.source = '';
