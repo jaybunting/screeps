@@ -90,7 +90,7 @@ module.exports.loop = function () {
         console.log('Spawning new longDistanceHarvester: ' + newName);
     }
 } else {
-    if ((scavangers.length < 1) && (energyAvailable >= 300) {
+    if ((scavangers.length < 1) && (energyAvailable >= 300)) {
         var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'scavanger');
         console.log('Spawning backup scavanger: ' + newName);
     }
