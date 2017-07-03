@@ -80,7 +80,7 @@ var roleScavanger = {
         creep.memory.sourcetype = '';
         var targets = creep.room.find(FIND_STRUCTURES, { // Look for extensions and spawns that are low on energy
             filter: (structure) => {
-                return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN || structure.structureType == STRUCTURE_TOWER) &&
+                return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
                     structure.energy < structure.energyCapacity;
             }
         });
