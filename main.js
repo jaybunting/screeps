@@ -90,7 +90,7 @@ module.exports.loop = function () {
         var newName = Game.spawns.Spawn1.createCustomCreep(energyAvailable, 'scavanger');
         console.log('Spawning backup scavanger: ' + newName);
     }
-    if (miners.length < containers.length) {
+    if ((miners.length < containers.length) && (energyAvailable >= 450)) {
         var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'miner');
         console.log('Spawning new miner: ' + newName);
     }

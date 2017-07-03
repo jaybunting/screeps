@@ -49,6 +49,12 @@ var roleScavanger = {
                         break;
                     }
                 }
+            } else {
+                if (creep.memory.sourcetype == 'source') {
+                    creep.memory.upgrading = true;
+                    creep.memory.source = '';
+                    creep.memory.sourcetype = '';
+                }
             }
 
         switch (creep.memory.sourcetype) {
