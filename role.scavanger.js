@@ -43,7 +43,7 @@ var roleScavanger = {
                 var sources = creep.room.find(FIND_SOURCES);
                 for (var name in sources) {
                     var harvesters = _.filter(Game.creeps, (creep) => {return (creep.memory.source == sources[name].id)});
-                    if (harvesters.length < 1) {
+                    if (harvesters.length < 2) {
                         creep.memory.source = sources[name].id;
                         creep.memory.sourcetype = 'source';
                         break;
@@ -68,7 +68,7 @@ var roleScavanger = {
                 break;
         }
 
-    } else {
+    }} else {
         creep.memory.upgrading = true; // Creep is full of energy, time to get to work
         creep.memory.source = '';
         creep.memory.sourcetype = '';
