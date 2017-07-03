@@ -32,6 +32,7 @@ module.exports.loop = function () {
     console.log('Miners: ' + miners.length + ' Harvesters: ' + harvesters.length + ' Upgraders: ' + upgraders.length + ' Builders: ' + builders.length + ' Scavangers: ' + scavangers.length + ' Repairers: ' + repairers.length + '\nContainers: ' + containers.length + ' Transports: ' + transports.length);
 
     var energyCapacity = Game.spawns.Spawn1.room.energyCapacityAvailable;
+    var energyAvailable = Game.spawns.Spawn1.room.energyAvailable;
 
     if(Game.spawns['Spawn1'].spawning) {
         var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
@@ -39,7 +40,9 @@ module.exports.loop = function () {
             Game.spawns['Spawn1'].pos.x + 1,
             Game.spawns['Spawn1'].pos.y,
             {align: 'left', opacity: 0.8});
-    }
+    } else {
+
+    if (energyCapacity == energyAvailable) {
 
     if(harvesters.length < 0) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'harvester',source: '',upgrading: false});
@@ -86,6 +89,9 @@ module.exports.loop = function () {
         var newName = customFunctions.spawnLongDistanceHarvester();
         console.log('Spawning new longDistanceHarvester: ' + newName);
     }
+}
+
+}
 
     roleTower.run('W59S92');
 
