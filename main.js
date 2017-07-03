@@ -43,54 +43,56 @@ module.exports.loop = function () {
             Game.spawns['Spawn1'].pos.y,
             {align: 'left', opacity: 0.8});
     } else {
+    
+    var newName = '';
 
     if (energyCapacity == energyAvailable) {
-    if (scavangers.length < 4) {
+    if ((scavangers.length < 4) && !(newName)) {
         var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'scavanger');
         console.log('Spawning new scavanger: ' + newName);
     }
-    if (miners.length < containers.length) {
+    if ((miners.length < containers.length) && !(newName)) {
         var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'miner');
         console.log('Spawning new miner: ' + newName);
     }
-    if (transports.length < 4) {
+    if ((transports.length < 4) && !(newName)) {
         var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'transport');
         console.log('Spawning new transport: ' + newName);
     }
-    if (harvesters.length < 0) {
+    if ((harvesters.length < 0) && !(newName)) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,CARRY,MOVE,MOVE], undefined, {role: 'harvester',source: '',upgrading: false});
         console.log('Spawning new harvester: ' + newName);
     }
-    if ((upgraders.length < 2) && (miners.length == containers.length) && (Game.getObjectById('59538980f728105070060ea4').store.energy > 30000)) {
+    if ((upgraders.length < 2) && !(newName) && (miners.length == containers.length) && (Game.getObjectById('59538980f728105070060ea4').store.energy > 30000)) {
         var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'upgrader');
         console.log('Spawning new upgrader: ' + newName);
     }
-    if (builders.length < 0) {
+    if ((builders.length < 0) && !(newName)) {
         var newName = Game.spawns['Spawn1'].createCreep([WORK,WORK,CARRY,MOVE], undefined, {role: 'builder',upgrading: false,source: ''});
         console.log('Spawning new builder: ' + newName);
     }
-    if (repairers.length < 2) {
+    if ((repairers.length < 2) && !(newName)) {
         var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'repairer');
         console.log('Spawning new repairer: ' + newName);
     }
-    if (attackers.length < 0) {
+    if ((attackers.length < 0) && !(newName)) {
         var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'attacker');
         console.log('Spawning new attacker: ' + newName);
     }
-    if (claimers.length < 0) {
+    if ((claimers.length < 0) && !(newName)) {
         var newName = customFunctions.spawnClaimer('W59S91');
         console.log('Spawning new claimer: ' + newName);
      }
-    if (longDistanceHarvesters.length < 0) {
+    if ((longDistanceHarvesters.length < 0) && !(newName)) {
         var newName = customFunctions.spawnLongDistanceHarvester();
         console.log('Spawning new longDistanceHarvester: ' + newName);
     }
 } else {
-    if ((scavangers.length < 4) && (energyAvailable >= 300)) {
+    if ((scavangers.length < 4) && (energyAvailable >= 300) && !(newName)) {
         var newName = Game.spawns.Spawn1.createCustomCreep(energyAvailable, 'scavanger');
         console.log('Spawning backup scavanger: ' + newName);
     }
-    if ((miners.length < containers.length) && (energyAvailable >= 450)) {
+    if ((miners.length < containers.length) && (energyAvailable >= 450) && !(newName)) {
         var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'miner');
         console.log('Spawning new miner: ' + newName);
     }
