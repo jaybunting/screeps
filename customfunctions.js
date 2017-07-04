@@ -37,8 +37,8 @@ module.exports = {
     },
 
     getCost: function (creep) {
-        var body = Game.creeps[creep].body;    
+        var body = creep.body;
         return body.reduce(function (cost, part) {
-            return cost + BODYPART_COST[part];}, 0);
+            return cost + BODYPART_COST[part.type];}, 0);
     }
 }
