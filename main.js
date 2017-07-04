@@ -139,7 +139,7 @@ var creepCost = 0;
         }
 
         if (!creep.memory.cost) {
-            creep.memory.cost = customFunction.getCost(creep);
+            creep.memory.cost = customFunctions.getCost(creep);
         }
         creepCost = creepCost + creep.memory.cost;
     }
