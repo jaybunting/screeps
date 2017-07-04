@@ -101,7 +101,7 @@ module.exports.loop = function () {
 }
 
     roleTower.run('W59S92');
-
+var creepCost = 0;
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
 
@@ -137,5 +137,11 @@ module.exports.loop = function () {
                 break;
             default:
         }
+
+        if (!creep.memory.cost) {
+            creep.memory.cost = getCost(creep);
+        }
+        creepCost = creepCost + creep.memory.cost;
     }
+    console.log("Total creep value is: " + creepCost);
 }

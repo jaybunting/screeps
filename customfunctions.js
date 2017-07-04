@@ -34,5 +34,11 @@ module.exports = {
     spawnClaimer: function (targetroom) {
         var newName = Game.spawns.Spawn1.createCustomCreep(0,'claimer');
         try {if (Game.creeps[newName].memory.role == 'claimer') {Game.creeps[newName].memory.targetroom = targetroom;}} catch (err) {console.log(err);}
+    },
+
+    getCost: function (creep) {
+        var body = Game.creeps[creep].body;    
+        return body.reduce(function (cost, part) {
+            return cost + BODYPART_COST[part];}, 0);
     }
 }
