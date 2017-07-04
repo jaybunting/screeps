@@ -143,5 +143,5 @@ var creepCost = 0;
         }
         creepCost = creepCost + creep.memory.cost;
     }
-    console.log("Total creep value is: " + creepCost);
+    console.log("Total creep value is: " + creepCost + "/30,000. " + Math.floor(creepCost/30000) + "%");
 }
