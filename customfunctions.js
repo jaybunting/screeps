@@ -18,11 +18,11 @@ module.exports = {
 
     pollCreeps: function () {
         var roles = ["harvester","upgrader","miner","builder","scavanger","repairer"];
-        var rooms = require('customfunctions').getRooms(); 
-        for (var each in rooms) {
-            Game.rooms[each].memory.activeCreeps = {};
+        var roomlist = require('customfunctions').getRooms(); 
+        for (var each in roomlist) {
+            Game.rooms[roomlist[each]].memory.activeCreeps = {};
             for (var eachrole in roles) {
-                Game.rooms[each].memory.activeCreeps[roles[eachrole]] = 0;
+                Game.rooms[roomlist[each]].memory.activeCreeps[roles[eachrole]] = 0;
             }
         }
     },
