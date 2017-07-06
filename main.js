@@ -52,8 +52,8 @@ module.exports.loop = function () {
             if (energyCapacity == energyAvailable) {
                 for (eachrole in roles) {
                     if ((Game.rooms[roomlist[eachroom]].memory.activeCreeps[roles[eachrole]] < Game.rooms[roomlist[eachroom]].memory.minCreeps[roles[eachrole]]) && !(newName)) {
-                        var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'scavanger');
-                        console.log('Spawning new scavanger: ' + newName);
+                        var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, roles[eachrole]);
+                        console.log('Spawning new ' + roles[eachrole] +': ' + newName);
                         break;
                     }
                 }
