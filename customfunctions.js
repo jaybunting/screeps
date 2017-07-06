@@ -17,7 +17,7 @@ module.exports = {
     },
 
     pollCreeps: function () {
-        var roles = ["harvester","upgrader","miner","builder","scavanger","repairer"];
+        var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transporter"];
         var roomlist = require('customfunctions').getRooms(); 
         for (var each in roomlist) {
             Game.rooms[roomlist[each]].memory.activeCreeps = {};
@@ -25,6 +25,12 @@ module.exports = {
                 Game.rooms[roomlist[each]].memory.activeCreeps[roles[eachrole]] = 0;
             }
         }
+
+        for(var name in Game.creeps) {
+        var creep = Game.creeps[name];
+        Game.rooms[creep.memory.homeRoom].memory.activeCreeps[creep.memory.role]++;
+        }
+
     },
 
     spawnLongDistanceHarvester: function () {
