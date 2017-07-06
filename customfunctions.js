@@ -45,8 +45,10 @@ module.exports = {
 
     getRooms: function () {
         var rooms = [];
-        for (var spawn in Game.spawns) {
-            rooms.push(spawn.room);
+        for (var each in Game.spawns) {
+            if (!rooms.indexOf(Game.spawns[each].room.name)) {
+                rooms.push(Game.spawns[each].room.name);
+            }
         }
         return rooms;
     }
