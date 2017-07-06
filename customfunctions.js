@@ -8,11 +8,10 @@ module.exports = {
         }
     },
 
-    spawninit: function () {
+    roomInit: function (room) {
         var roles = ["harvester","upgrader","miner","builder","scavanger","repairer"];
-        Game.spawns['Spawn1'].memory.minCreeps = [];
         for (var name in roles) {
-            Game.spawns['Spawn1'].memory.minCreeps.roles[name] = 0;
+            Game.rooms[room].memory[name].minCreeps = 0;
         }
     },
 
@@ -48,7 +47,6 @@ module.exports = {
         for (var each in Game.spawns) {
             if (rooms.indexOf(Game.spawns[each].room.name) < 0) {
                 rooms.push(Game.spawns[each].room.name);
-                console.log(Game.spawns[each].room.name);
             }
         }
         return rooms;
