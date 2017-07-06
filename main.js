@@ -51,11 +51,11 @@ module.exports.loop = function () {
                     console.log('Spawning new upgrader: ' + newName);
                 }
             } else {
-                if ((Game.rooms[roomlist['eachroom']].memory.activeCreeps['scavanger'] < Game.rooms[roomlist[eachroom]].memory.minCreeps['scavanger']) && (energyAvailable >= 300) && !(newName)) {
+                if ((Game.rooms[roomlist[eachroom]].memory.activeCreeps['scavanger'] < Game.rooms[roomlist[eachroom]].memory.minCreeps['scavanger']) && (energyAvailable >= 300) && !(newName)) {
                     var newName = roomspawn.createCustomCreep(energyAvailable, 'scavanger');
                     console.log('Spawning backup scavanger: ' + newName);
                 }
-                if ((Game.rooms[roomlist['eachroom']].memory.activeCreeps['miner'] < Game.rooms[roomlist[eachroom]].memory.minCreeps['miner']) && (energyAvailable >= 450) && !(newName)) {
+                if ((Game.rooms[roomlist[eachroom]].memory.activeCreeps['miner'] < Game.rooms[roomlist[eachroom]].memory.minCreeps['miner']) && (energyAvailable >= 450) && !(newName)) {
                     var newName = roomspawn.createCustomCreep(energyCapacity, 'miner');
                     console.log('Spawning new miner: ' + newName);
                 }
