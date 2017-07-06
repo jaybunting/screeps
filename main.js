@@ -17,6 +17,11 @@ module.exports.loop = function () {
     
     customFunctions.cleanUp(); // Memory cleanup for dead creeps
     customFunctions.pollCreeps(); // Count living creeps
+    var roomlist = customFunctions.getRooms(); // Get list of rooms with Spawns I control
+
+    for (var eachroom in roomlist) {
+        console.log("Doing stuff for room: " + roomlist[eachroom]);
+    }
 
     var containers = Game.spawns.Spawn1.room.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_CONTAINER); }});
     
