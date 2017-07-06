@@ -16,8 +16,10 @@ var roles = ['harvester','upgrader','miner','builder','scavanger','repairer'];
 module.exports.loop = function () {
     
     customFunctions.cleanUp(); // Memory cleanup for dead creeps
+    customFunctions.pollCreeps(); // Count living creeps
 
     var containers = Game.spawns.Spawn1.room.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_CONTAINER); }});
+    
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');

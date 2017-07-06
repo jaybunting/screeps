@@ -9,7 +9,7 @@ module.exports = {
     },
 
     roomInit: function (room) {
-        var roles = ["harvester","upgrader","miner","builder","scavanger","repairer"];
+        var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transport"];
         Game.rooms[room].memory.minCreeps = {};
         for (var name in roles) {
             Game.rooms[room].memory.minCreeps[roles[name]] = 0;
