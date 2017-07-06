@@ -22,20 +22,6 @@ module.exports.loop = function () {
         console.log("Doing stuff for room: " + roomlist[eachroom]);
 
         var containers = Game.spawns.Spawn1.room.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_CONTAINER); }});
-           
-        var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-        var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-        var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-        var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
-        var scavangers = _.filter(Game.creeps, (creep) => creep.memory.role == 'scavanger');
-        var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
-        var transports = _.filter(Game.creeps, (creep) => creep.memory.role == 'transport');
-        var attackers = _.filter(Game.creeps, (creep) => creep.memory.role == 'attacker');
-        var claimers = _.filter(Game.creeps, (creep) => creep.memory.role == 'claimer');
-        var longDistanceHarvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'longDistanceHarvester');
-
-        console.log('Miners: ' + miners.length + ' Harvesters: ' + harvesters.length + ' Upgraders: ' + upgraders.length + ' Builders: ' + builders.length + ' Scavangers: ' + scavangers.length + ' Repairers: ' + repairers.length + '\nContainers: ' + containers.length + ' Transports: ' + transports.length);
-
         var energyCapacity = Game.spawns.Spawn1.room.energyCapacityAvailable;
         var energyAvailable = Game.spawns.Spawn1.room.energyAvailable;
 
@@ -58,16 +44,16 @@ module.exports.loop = function () {
                     }
                 }
 
-                if ((upgraders.length < 2) && !(newName) && (miners.length == containers.length) && (Game.getObjectById('59538980f728105070060ea4').store.energy > 30000)) {
+                if ((Game.rooms[roomlist[eachroom]].memory.activeCreeps['upgraders'] < Game.rooms[roomlist[eachroom]].memory.minCreeps['upgraders']) && !(newName) && (Game.rooms[roomlist['eachroom']].memory.activeCreeps['miner'] < Game.rooms[roomlist[eachroom]].memory.minCreeps['miner']) && (Game.getObjectById('59538980f728105070060ea4').store.energy > 30000)) {
                     var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'upgrader');
                     console.log('Spawning new upgrader: ' + newName);
                 }
             } else {
-                if ((scavangers.length < 4) && (energyAvailable >= 300) && !(newName)) {
+                if ((Game.rooms[roomlist['eachroom']].memory.activeCreeps['scavanger'] < Game.rooms[roomlist[eachroom]].memory.minCreeps['scavanger']) && (energyAvailable >= 300) && !(newName)) {
                     var newName = Game.spawns.Spawn1.createCustomCreep(energyAvailable, 'scavanger');
                     console.log('Spawning backup scavanger: ' + newName);
                 }
-                if ((miners.length < containers.length) && (energyAvailable >= 450) && !(newName)) {
+                if ((Game.rooms[roomlist['eachroom']].memory.activeCreeps['miner'] < Game.rooms[roomlist[eachroom]].memory.minCreeps['miner']) && (energyAvailable >= 450) && !(newName)) {
                     var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'miner');
                     console.log('Spawning new miner: ' + newName);
                 }
@@ -75,7 +61,14 @@ module.exports.loop = function () {
 
         }
 
-    console.log('Miners: ' + miners.length + ' Harvesters: ' + harvesters.length + ' Upgraders: ' + upgraders.length + ' Builders: ' + builders.length + ' Scavangers: ' + scavangers.length + ' Repairers: ' + repairers.length + '\nContainers: ' + containers.length + ' Transports: ' + transports.length);
+    console.log('Miners: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['miner']
+         + ' Harvesters: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['harvester'] + 
+            ' Upgraders: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['upgrader'] + 
+             ' Builders: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['builder'] +
+           ' Scavangers: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['scavanger'] + 
+            ' Repairers: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['repairer'] + 
+            'Containers: ' + containers.length + 
+           ' Transports: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['transport']);
     console.log(energyAvailable + "/" + energyCapacity + " energy for spawning.");
     }
 
