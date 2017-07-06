@@ -17,7 +17,7 @@ module.exports = {
     },
 
     pollCreeps: function () {
-        var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transporter"];
+        var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transport"];
         var roomlist = require('customfunctions').getRooms(); 
         for (var each in roomlist) {
             Game.rooms[roomlist[each]].memory.activeCreeps = {};
