@@ -9,7 +9,7 @@ module.exports = {
     },
 
     roomInit: function (room) {
-        var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transport"];
+        var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transport","claimer"];
         Game.rooms[room].memory.minCreeps = {};
         for (var name in roles) {
             Game.rooms[room].memory.minCreeps[roles[name]] = 0;
@@ -17,7 +17,7 @@ module.exports = {
     },
 
     pollCreeps: function () {
-        var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transport"];
+        var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transport","claimer"];
         var roomlist = require('customfunctions').getRooms(); 
         for (var each in roomlist) {
             Game.rooms[roomlist[each]].memory.activeCreeps = {};

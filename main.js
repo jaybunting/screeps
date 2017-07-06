@@ -11,7 +11,7 @@ var roleAttacker = require('role.attacker');
 var roleClaimer = require('role.claimer');
 var customFunctions = require('customfunctions');
 require('prototype.spawn')();
-var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transport"];
+var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transport","claimer"];
 
 module.exports.loop = function () {
     customFunctions.cleanUp(); // Memory cleanup for dead creeps
@@ -69,7 +69,7 @@ module.exports.loop = function () {
              ' Builders: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['builder'] +
            ' Scavangers: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['scavanger'] + 
             ' Repairers: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['repairer'] + 
-            'Containers: ' + containers.length + 
+           ' Containers: ' + containers.length + 
            ' Transports: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['transport']);
     console.log(energyAvailable + "/" + energyCapacity + " energy for spawning.");
     }
