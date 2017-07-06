@@ -15,6 +15,7 @@ module.exports = {
             Game.spawns['Spawn1'].memory.minCreeps.roles[name] = 0;
         }
     },
+
     spawnLongDistanceHarvester: function () {
         var energyCapacity = Game.spawns.Spawn1.room.energyCapacityAvailable;
         var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'longDistanceHarvester');
@@ -40,5 +41,13 @@ module.exports = {
         var body = creep.body;
         return body.reduce(function (cost, part) {
             return cost + BODYPART_COST[part.type];}, 0);
+    },
+
+    getRooms: function () {
+        var rooms = [];
+        for (var spawn in Game.spawns) {
+            rooms.push(spawn.room);
+        }
+        return rooms;
     }
 }
