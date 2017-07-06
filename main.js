@@ -61,12 +61,12 @@ module.exports.loop = function () {
 
         }
 
-    console.log('Miners: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['miner']
-         + ' Harvesters: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['harvester'] + 
-            ' Upgraders: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['upgrader'] + 
-             ' Builders: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['builder'] +
-           ' Scavangers: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['scavanger'] + 
-            ' Repairers: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['repairer'] + 
+    console.log('Miners: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['miner']
+         + ' Harvesters: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['harvester'] + 
+            ' Upgraders: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['upgrader'] + 
+             ' Builders: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['builder'] +
+           ' Scavangers: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['scavanger'] + 
+            ' Repairers: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['repairer'] + 
             'Containers: ' + containers.length + 
            ' Transports: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['transport']);
     console.log(energyAvailable + "/" + energyCapacity + " energy for spawning.");
