@@ -21,40 +21,42 @@ module.exports.loop = function () {
     for (var eachroom in roomlist) {
         console.log("Doing stuff for room: " + roomlist[eachroom]);
 
+        var roomspawn = Game.getObjectById(Game.rooms[roomlist[eachroom]].memory.spawn);
+
         var containers = Game.spawns.Spawn1.room.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_CONTAINER); }});
         var energyCapacity = Game.spawns.Spawn1.room.energyCapacityAvailable;
         var energyAvailable = Game.spawns.Spawn1.room.energyAvailable;
 
         console.log(energyAvailable + "/" + energyCapacity + " energy for spawning.");
 
-        if(Game.spawns['Spawn1'].spawning) {
-            var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
-            Game.spawns['Spawn1'].room.visual.text(spawningCreep.memory.role,
-                Game.spawns['Spawn1'].pos.x + 1,
-                Game.spawns['Spawn1'].pos.y,
+        if(roomspawn.spawning) {
+            var spawningCreep = Game.creeps[roomspawn.spawning.name];
+            roomspawn.room.visual.text(spawningCreep.memory.role,
+                roomspawn.pos.x + 1,
+                roomspawn.pos.y,
                 {align: 'left', opacity: 0.8});
         } else {
             var newName = '';
             if (energyCapacity == energyAvailable) {
                 for (eachrole in roles) {
                     if ((Game.rooms[roomlist[eachroom]].memory.activeCreeps[roles[eachrole]] < Game.rooms[roomlist[eachroom]].memory.minCreeps[roles[eachrole]]) && !(newName)) {
-                        var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, roles[eachrole]);
+                        var newName = roomspawn.createCustomCreep(energyCapacity, roles[eachrole]);
                         console.log('Spawning new ' + roles[eachrole] +': ' + newName);
                         break;
                     }
                 }
 
                 if ((Game.rooms[roomlist[eachroom]].memory.activeCreeps['upgraders'] < Game.rooms[roomlist[eachroom]].memory.minCreeps['upgraders']) && !(newName) && (Game.rooms[roomlist['eachroom']].memory.activeCreeps['miner'] < Game.rooms[roomlist[eachroom]].memory.minCreeps['miner']) && (Game.getObjectById('59538980f728105070060ea4').store.energy > 30000)) {
-                    var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'upgrader');
+                    var newName = roomspawn.createCustomCreep(energyCapacity, 'upgrader');
                     console.log('Spawning new upgrader: ' + newName);
                 }
             } else {
                 if ((Game.rooms[roomlist['eachroom']].memory.activeCreeps['scavanger'] < Game.rooms[roomlist[eachroom]].memory.minCreeps['scavanger']) && (energyAvailable >= 300) && !(newName)) {
-                    var newName = Game.spawns.Spawn1.createCustomCreep(energyAvailable, 'scavanger');
+                    var newName = roomspawn.createCustomCreep(energyAvailable, 'scavanger');
                     console.log('Spawning backup scavanger: ' + newName);
                 }
                 if ((Game.rooms[roomlist['eachroom']].memory.activeCreeps['miner'] < Game.rooms[roomlist[eachroom]].memory.minCreeps['miner']) && (energyAvailable >= 450) && !(newName)) {
-                    var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'miner');
+                    var newName = roomspawn.createCustomCreep(energyCapacity, 'miner');
                     console.log('Spawning new miner: ' + newName);
                 }
             }
