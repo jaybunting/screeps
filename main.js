@@ -9,6 +9,8 @@ var roleTransport = require('role.transport');
 var roleLongDistanceHarvester = require('role.longdistanceharvester');
 var roleAttacker = require('role.attacker');
 var roleClaimer = require('role.claimer');
+var roleEnvoy = require('role.envoy');
+
 var customFunctions = require('customfunctions');
 require('prototype.spawn')();
 var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transport","claimer"];
@@ -109,6 +111,9 @@ module.exports.loop = function () {
                 break;
             case 'claimer':
                 try {roleClaimer.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
+                break;
+            case 'envoy':
+                try {roleEnvoy.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
                 break;
             default:
         }

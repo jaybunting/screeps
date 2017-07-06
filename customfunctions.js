@@ -49,6 +49,22 @@ module.exports = {
         }
     },
 
+    spawnEnvoy: function () {
+        var energyCapacity = Game.spawns.Spawn1.room.energyCapacityAvailable;
+        var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'envoy');
+        try {
+            if (newName) {
+                console.log(newName);
+                Game.creeps[newName].memory.home = 'W59S92';
+                Game.creeps[newName].memory.target = 'W59S91';
+                Game.creeps[newName].memory.sourceIndex = '0';
+                Game.creeps[newName].memory.working = false;
+            }
+        } catch(err) {
+            
+        }
+    },
+
     spawnClaimer: function (targetroom) {
         var newName = Game.spawns.Spawn1.createCustomCreep(0,'claimer');
         try {if (Game.creeps[newName].memory.role == 'claimer') {Game.creeps[newName].memory.targetroom = targetroom;}} catch (err) {console.log(err);}
