@@ -12,7 +12,7 @@ module.exports = {
         var roles = ["harvester","upgrader","miner","builder","scavanger","repairer"];
         Game.rooms[room].memory.minCreeps = {};
         for (var name in roles) {
-            Game.rooms[room].memory.minCreeps[roles[name]]] = 0;
+            Game.rooms[room].memory.minCreeps[roles[name]] = 0;
         }
     },
 
