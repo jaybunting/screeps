@@ -39,7 +39,7 @@ module.exports.loop = function () {
         var energyCapacity = Game.spawns.Spawn1.room.energyCapacityAvailable;
         var energyAvailable = Game.spawns.Spawn1.room.energyAvailable;
 
-           console.log(energyAvailable + "/" + energyCapacity + " energy for spawning.");
+        console.log(energyAvailable + "/" + energyCapacity + " energy for spawning.");
 
         if(Game.spawns['Spawn1'].spawning) {
             var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
@@ -50,7 +50,7 @@ module.exports.loop = function () {
         } else {
             var newName = '';
             if (energyCapacity == energyAvailable) {
-                if ((scavangers.length < 4) && !(newName)) {
+                if ((Game.rooms[roomlist[eachroom]].memory.activeCreeps['scavangers'] < Game.rooms[roomlist[eachroom]].memory.minCreeps['scavangers']) && !(newName)) {
                     var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'scavanger');
                     console.log('Spawning new scavanger: ' + newName);
                 }
