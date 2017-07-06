@@ -68,7 +68,7 @@ module.exports.loop = function () {
            ' Scavangers: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['scavanger'] + 
             ' Repairers: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['repairer'] + 
             'Containers: ' + containers.length + 
-           ' Transports: ' + Game.rooms[roomlist['eachroom']].memory.activeCreeps['transport']);
+           ' Transports: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['transport']);
     console.log(energyAvailable + "/" + energyCapacity + " energy for spawning.");
     }
 
