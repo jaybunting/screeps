@@ -16,6 +16,16 @@ module.exports = {
         }
     },
 
+    pollCreeps: function () {
+        var roles = ["harvester","upgrader","miner","builder","scavanger","repairer"]; 
+        for (var each in getRooms()) {
+            each.memory.activeCreeps = {};
+            for (var eachrole in roles) {
+                each.memory.activeCreeps[roles[eachrole]] = 0;
+            }
+        }
+    },
+
     spawnLongDistanceHarvester: function () {
         var energyCapacity = Game.spawns.Spawn1.room.energyCapacityAvailable;
         var newName = Game.spawns.Spawn1.createCustomCreep(energyCapacity, 'longDistanceHarvester');
