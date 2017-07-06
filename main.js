@@ -19,6 +19,7 @@ module.exports.loop = function () {
     customFunctions.cleanUp(); // Memory cleanup for dead creeps
     customFunctions.pollCreeps(); // Count living creeps
     var roomlist = customFunctions.getRooms(); // Get list of rooms with Spawns I control
+    roomlist.push('W59S91');
 
     for (var eachroom in roomlist) {
         console.log("Doing stuff for room: " + roomlist[eachroom]);
