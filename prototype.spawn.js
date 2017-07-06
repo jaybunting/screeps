@@ -35,6 +35,6 @@ module.exports = function() {
                         body.push(MOVE);
                     }
             }
-           return this.createCreep(body, undefined, {role: roleName, source: '',upgrading: false, target: ''});
+           return this.createCreep(body, undefined, {role: roleName, source: '',upgrading: false, target: '',homeRoom: this.room.name});
         };
 };
