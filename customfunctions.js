@@ -11,8 +11,8 @@ module.exports = {
     roomInit: function (room) {
         var roles = ["harvester","upgrader","miner","builder","scavanger","repairer"];
         for (var name in roles) {
-            Game.rooms[room].memory[roles[name]] = [];
-            Game.rooms[room].memory[roles[name]]['minCreeps'] = 0;
+            Game.rooms[room].memory.minCreeps = [];
+            Game.rooms[room].memory.minCreeps[roles[name]]] = 0;
         }
     },
 
