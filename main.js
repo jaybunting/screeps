@@ -26,10 +26,8 @@ module.exports.loop = function () {
         var roomspawn = Game.getObjectById(Game.rooms[roomlist[eachroom]].memory.spawn);
 
         var containers = Game.spawns.Spawn1.room.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_CONTAINER); }});
-        var energyCapacity = Game.spawns.Spawn1.room.energyCapacityAvailable;
-        var energyAvailable = Game.spawns.Spawn1.room.energyAvailable;
-
-        console.log(energyAvailable + "/" + energyCapacity + " energy for spawning.");
+        var energyCapacity = Game.rooms[roomlist[eachroom]].energyCapacityAvailable;
+        var energyAvailable = Game.rooms[roomlist[eachroom]].energyAvailable;
 
         if(roomspawn.spawning) {
             var spawningCreep = Game.creeps[roomspawn.spawning.name];

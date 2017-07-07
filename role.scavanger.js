@@ -2,7 +2,7 @@ var roleScavanger = {
     run: function(creep) {
     if (creep.carry.energy == 0) {creep.memory.upgrading = false;}
     if ((creep.carry.energy < creep.carryCapacity) && (creep.memory.upgrading == false)) {
-        if (Game.getObjectById('59538980f728105070060ea4').store.energy > 1000) {
+        if ((creep.room.roomName == 'W59S92') && (Game.getObjectById('59538980f728105070060ea4').store.energy > 1000)) {
             creep.memory.source = '59538980f728105070060ea4';
             creep.memory.sourcetype = 'container';}
             
