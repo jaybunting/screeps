@@ -38,11 +38,10 @@ var roleScavanger = {
                 }
             }
         }
-            var miners = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
-            if (miners.length < 1) {
+            if (Game.room[creep.pos.roomName].memory.activeCreeps['miner'] < 1) {
                 var sources = creep.room.find(FIND_SOURCES);
                 for (var name in sources) {
-                    var harvesters = _.filter(Game.creeps, (creep) => {return (creep.memory.source == sources[name].id)});
+                    var harvesters = _.filter(Game.creeps, (creep_) => {return ((creep_.memory.source == sources[name].id) && (creep_.pos.roomName == creep.pos.roomName))});
                     if (harvesters.length < 2) {
                         creep.memory.source = sources[name].id;
                         creep.memory.sourcetype = 'source';
