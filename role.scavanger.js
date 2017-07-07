@@ -38,7 +38,7 @@ var roleScavanger = {
                 }
             }
         }
-            if (Game.room[creep.pos.roomName].memory.activeCreeps['miner'] < 1) {
+            if (Game.rooms[creep.pos.roomName].memory.activeCreeps['miner'] < 1) {
                 var sources = creep.room.find(FIND_SOURCES);
                 for (var name in sources) {
                     var harvesters = _.filter(Game.creeps, (creep_) => {return ((creep_.memory.source == sources[name].id) && (creep_.pos.roomName == creep.pos.roomName))});
