@@ -9,7 +9,7 @@ var roleScavanger = {
         if (creep.memory.source.length < 1) {
            var sources = creep.room.find(FIND_DROPPED_RESOURCES, {
              filter: (dropped_resources) => {
-                return (dropped_resources.energy > 2000);
+                return (dropped_resources.energy > 20);
              }});
              
             if (sources.length) {

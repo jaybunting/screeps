@@ -13,7 +13,7 @@ var roleEnvoy = require('role.envoy');
 
 var customFunctions = require('customfunctions');
 require('prototype.spawn')();
-var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transport","claimer"];
+var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transport","claimer","attacker"];
 
 module.exports.loop = function () {
     customFunctions.cleanUp(); // Memory cleanup for dead creeps
@@ -28,6 +28,8 @@ module.exports.loop = function () {
         var containers = Game.spawns.Spawn1.room.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_CONTAINER); }});
         var energyCapacity = Game.rooms[roomlist[eachroom]].energyCapacityAvailable;
         var energyAvailable = Game.rooms[roomlist[eachroom]].energyAvailable;
+        
+        roleTower.run(roomlist[eachroom]);
 
         if(roomspawn.spawning) {
             var spawningCreep = Game.creeps[roomspawn.spawning.name];
@@ -73,8 +75,6 @@ module.exports.loop = function () {
            ' Transports: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['transport']);
     console.log(energyAvailable + "/" + energyCapacity + " energy for spawning.");
     }
-
-    roleTower.run('W59S92');
 
     var creepCost = 0;
     for(var name in Game.creeps) {
