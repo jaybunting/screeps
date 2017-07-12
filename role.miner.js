@@ -13,10 +13,7 @@ var roleMiner = {
                     }
                 }
             }
-            if (creep.harvest(Game.getObjectById(creep.memory.source)) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(Game.getObjectById(creep.memory.source), {visualizePathStyle: {stroke: '#ffaa00'}});
-            }
-
+            Game.getObjectById(creep.memory.source).gatherEnergy(creep);
         }
  };
 

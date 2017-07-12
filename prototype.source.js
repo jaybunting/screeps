@@ -1,6 +1,9 @@
 module.exports = function() {
     Source.prototype.gatherEnergy =
         function(creep) {
-            return creep.harvest(this);
+
+            if (creep.harvest(this) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(this, {visualizePathStyle: {stroke: '#ffaa00'}});
+            }
         };
 };
