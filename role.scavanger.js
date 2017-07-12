@@ -50,7 +50,9 @@ var roleScavanger = {
                 }
             }
 
-        switch (creep.memory.sourcetype) {
+        Game.getObjectById(creep.memory.source).harvestEnergy(creep);
+
+/*        switch (creep.memory.sourcetype) {
             case 'dropped_energy':
                  if (creep.pickup(Game.getObjectById(creep.memory.source)) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(Game.getObjectById(creep.memory.source), {visualizePathStyle: {stroke: '#ffaa00'}});
@@ -65,7 +67,7 @@ var roleScavanger = {
                 if (creep.harvest(Game.getObjectById(creep.memory.source)) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(Game.getObjectById(creep.memory.source), {visualizePathStyle: {stroke: '#ffaa00'}});
                 break;
-        }
+        }*/
 
     }} else {
         creep.memory.upgrading = true; // Creep is full of energy, time to get to work
