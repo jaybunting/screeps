@@ -47,8 +47,12 @@ var roleScavanger = {
                 }
             }
             
-        if (Game.getObjectById(creep.memory.source).gatherEnergy(creep) < 0) {creep.memory.source = '';};
-        
+        if (Game.getObjectById(creep.memory.source)) {
+            Game.getObjectById(creep.memory.source).gatherEnergy(creep);
+        } else {
+            creep.memory.source = '';
+        };
+
     } else {
         creep.memory.upgrading = true; // Creep is full of energy, time to get to work
         creep.memory.source = '';
