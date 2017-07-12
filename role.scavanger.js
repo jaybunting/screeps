@@ -8,7 +8,7 @@ var roleScavanger = {
                 return ((structure.structureType == STRUCTURE_CONTAINER) && (structure.store[RESOURCE_ENERGY] > 0));
                     }
                 });
-        creep.memory.source = containers[0];        
+        creep.memory.source = containers[0].id;        
         Game.getObjectById(creep.memory.source).harvestEnergy(creep);
 } else {
         creep.memory.upgrading = true; // Creep is full of energy, time to get to work
