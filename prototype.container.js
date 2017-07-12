@@ -1,7 +1,7 @@
 module.exports = function() {
-    Source.prototype.gatherEnergy =
+    StructureContainer.prototype.gatherEnergy =
         function(creep) {
-            if (creep.pickup(this) == ERR_NOT_IN_RANGE) {
+            if (creep.withdraw(this, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(this, {visualizePathStyle: {stroke: '#ffaa00'}});
             }
         };
