@@ -13,6 +13,7 @@ var roleEnvoy = require('role.envoy');
 
 var customFunctions = require('customfunctions');
 require('prototype.spawn')();
+require('prototype.source')();
 var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transport","claimer","attacker"];
 
 module.exports.loop = function () {
