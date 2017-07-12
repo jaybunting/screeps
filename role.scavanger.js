@@ -3,14 +3,13 @@ var roleScavanger = {
     if (creep.carry.energy == 0) {creep.memory.upgrading = false;}
 
     if ((creep.carry.energy < creep.carryCapacity) && (creep.memory.upgrading == false)) {
-
         var containers = creep.room.find(FIND_STRUCTURES, {
             filter: (structure) => {
                 return ((structure.structureType == STRUCTURE_CONTAINER) && (structure.store[RESOURCE_ENERGY] > 0));
                     }
                 });
+        creep.memory.source = containers[0];        
         Game.getObjectById(creep.memory.source).harvestEnergy(creep);
-    
 } else {
         creep.memory.upgrading = true; // Creep is full of energy, time to get to work
         creep.memory.source = '';
