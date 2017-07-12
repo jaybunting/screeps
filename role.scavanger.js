@@ -1,6 +1,7 @@
 var roleScavanger = {
     run: function(creep) {
     if (creep.carry.energy == 0) {creep.memory.upgrading = false;}
+
     if ((creep.carry.energy < creep.carryCapacity) && (creep.memory.upgrading == false)) {
         if ((creep.room.roomName == 'W59S92') && (Game.getObjectById('59538980f728105070060ea4').store.energy > 1000)) {
             creep.memory.source = '59538980f728105070060ea4';
@@ -18,8 +19,6 @@ var roleScavanger = {
                 });
                 
                 try {creep.memory.source = sources[0].id;} catch(err) {console.log("Resources" + err);}
-                
-                creep.memory.sourcetype = 'dropped_energy';
         
             } else {
                 var containers = creep.room.find(FIND_STRUCTURES, {
@@ -32,9 +31,7 @@ var roleScavanger = {
                     containers.sort(function (a, b) {
                         return a.store[RESOURCE_ENERGY] > b.store[RESOURCE_ENERGY] ? -1 : 1
                     });
-                    
                     try {creep.memory.source = containers[0].id;} catch(err) {console.log("Containers" + err);}
-                    creep.memory.sourcetype = 'container';
                 }
             }
         }
@@ -49,9 +46,10 @@ var roleScavanger = {
                     }
                 }
             }
-
+            
         Game.getObjectById(creep.memory.source).harvestEnergy(creep);
-    } else {
+    
+} else {
         creep.memory.upgrading = true; // Creep is full of energy, time to get to work
         creep.memory.source = '';
         creep.memory.sourcetype = '';
