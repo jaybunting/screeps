@@ -9,7 +9,7 @@ var roleScavanger = {
                     }
                 });
         creep.memory.source = containers[0].id;        
-        Game.getObjectById(creep.memory.source).harvestEnergy(creep);
+        Game.getObjectById(creep.memory.source).gatherEnergy(creep);
 } else {
         creep.memory.upgrading = true; // Creep is full of energy, time to get to work
         creep.memory.source = '';
