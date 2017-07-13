@@ -3,9 +3,9 @@ var roleScavanger = {
     if (creep.carry.energy == 0) {creep.memory.upgrading = false;}
 
     if ((creep.carry.energy < creep.carryCapacity) && (creep.memory.upgrading == false)) {
-        if ((creep.room.roomName == 'W59S92') && (Game.getObjectById('59538980f728105070060ea4').store.energy > 1000)) {
-            creep.memory.source = '59538980f728105070060ea4';
-            creep.memory.sourcetype = 'container';}
+        if (((Game.getObjectById(Game.getObjectById(creep.pos.room.id).memory.storage)) && (Game.getObjectById(Game.getObjectById(creep.pos.room.id).memory.storage)).store.energy > 1000)) {
+            creep.memory.source = Game.getObjectById(Game.getObjectById(creep.pos.room.id).memory.storage;
+            }
             
         if (creep.memory.source.length < 1) {
            var sources = creep.room.find(FIND_DROPPED_RESOURCES, {
