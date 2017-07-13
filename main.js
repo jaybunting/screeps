@@ -17,6 +17,7 @@ require('prototype.source')();
 require('prototype.container')();
 require('prototype.storage')();
 require('prototype.resource')();
+require('prototype.creep')();
 
 var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transport","claimer","attacker"];
 
@@ -85,41 +86,8 @@ module.exports.loop = function () {
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
 
-        switch(creep.memory.role) {
-            case 'harvester':
-                try {roleHarvester.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
-                break;
-            case 'upgrader':
-                try {roleUpgrader.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
-                break;
-            case 'miner':
-                try {roleMiner.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
-                break;
-            case 'builder':
-                try {roleBuilder.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
-                break;
-            case 'scavanger':
-                try {roleScavanger.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
-                break;
-            case 'repairer':
-                try {roleRepairer.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
-                break;
-            case 'transport':
-                try {roleTransport.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
-            case 'longDistanceHarvester':
-                try {roleLongDistanceHarvester.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
-                break;
-            case 'attacker':
-                try {roleAttacker.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
-                break;
-            case 'claimer':
-                try {roleClaimer.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
-                break;
-            case 'envoy':
-                try {roleEnvoy.run(creep);} catch(err) {console.log("Creep " + name + " err " + err);}
-                break;
-            default:
-        }
+        try {creep.runRole();} catch(err) {console.log("Creep " + name + " err " + err);}
+
         if (!creep.memory.cost) {
             creep.memory.cost = customFunctions.getCost(creep);
         }
