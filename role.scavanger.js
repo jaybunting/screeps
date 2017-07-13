@@ -4,7 +4,7 @@ var roleScavanger = {
 
     if ((creep.carry.energy < creep.carryCapacity) && (creep.memory.upgrading == false)) {
         if (((Game.getObjectById(Game.getObjectById(creep.pos.room.id).memory.storage)) && (Game.getObjectById(Game.getObjectById(creep.pos.room.id).memory.storage)).store.energy > 1000)) {
-            creep.memory.source = Game.getObjectById(Game.getObjectById(creep.pos.room.id).memory.storage;
+            creep.memory.source = Game.getObjectById(Game.getObjectById(creep.pos.room.id)).memory.storage;
             }
             
         if (creep.memory.source.length < 1) {
