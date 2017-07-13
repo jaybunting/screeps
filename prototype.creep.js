@@ -1,5 +1,5 @@
 module.exports = function() {
-    Creep.prototype.runRole() =
+    Creep.prototype.runRole =
         function() {
                     switch(this.memory.role) {
                         case 'harvester':
