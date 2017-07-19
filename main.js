@@ -19,7 +19,7 @@ module.exports.loop = function () {
 
         var roomspawn = Game.getObjectById(Game.rooms[roomlist[eachroom]].memory.spawn);
 
-        var containers = Game.getObjectById(Game.rooms[roomlist[eachroom]].memory.spawn).find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_CONTAINER); }});
+        var containers = Game.getObjectById(Game.rooms[roomlist[eachroom]].memory.spawn).room.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_CONTAINER); }});
         var energyCapacity = Game.rooms[roomlist[eachroom]].energyCapacityAvailable;
         var energyAvailable = Game.rooms[roomlist[eachroom]].energyAvailable;
         
