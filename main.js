@@ -1,15 +1,4 @@
-var roleUpgrader = require('role.upgrader');
-var roleMiner = require('role.miner');
-var roleBuilder = require('role.builder');
-var roleScavanger = require('role.scavanger');
 var roleTower = require('role.tower');
-var roleRepairer = require('role.repairer');
-var roleTransport = require('role.transport');
-var roleLongDistanceHarvester = require('role.longdistanceharvester');
-var roleAttacker = require('role.attacker');
-var roleClaimer = require('role.claimer');
-var roleEnvoy = require('role.envoy');
-
 var customFunctions = require('customfunctions');
 require('prototype.spawn')();
 require('prototype.source')();
