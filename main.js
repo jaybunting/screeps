@@ -1,4 +1,3 @@
-var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleMiner = require('role.miner');
 var roleBuilder = require('role.builder');
@@ -19,7 +18,7 @@ require('prototype.storage')();
 require('prototype.resource')();
 require('prototype.creep')();
 
-var roles = ["harvester","upgrader","miner","builder","scavanger","repairer","transport","claimer","attacker"];
+var roles = ["upgrader","miner","builder","scavanger","repairer","transport","claimer","attacker"];
 
 module.exports.loop = function () {
     customFunctions.cleanUp(); // Memory cleanup for dead creeps
@@ -71,8 +70,7 @@ module.exports.loop = function () {
 
         }
 
-    console.log('Miners: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['miner']
-         + ' Harvesters: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['harvester'] + 
+    console.log('Miners: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['miner'] +
             ' Upgraders: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['upgrader'] + 
              ' Builders: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['builder'] +
            ' Scavangers: ' + Game.rooms[roomlist[eachroom]].memory.activeCreeps['scavanger'] + 
