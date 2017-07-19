@@ -1,5 +1,4 @@
 var roles = {
-    harvester: require('role.harvester'),
     upgrader: require('role.upgrader'),
     miner: require('role.miner'),
     builder: require('role.builder'),
