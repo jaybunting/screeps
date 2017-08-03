@@ -1,5 +1,13 @@
 var roleTower = require('role.tower');
 var customFunctions = require('customfunctions');
+
+require('prototype.spawn')();
+require('prototype.source')();
+require('prototype.container')();
+require('prototype.storage')();
+require('prototype.resource')();
+require('prototype.creep')();
+
 var rolesRequire = {
     upgrader: require('role.upgrader'),
     miner: require('role.miner'),
