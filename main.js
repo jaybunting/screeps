@@ -1,6 +1,5 @@
 var roleTower = require('role.tower');
 var customFunctions = require('customfunctions');
-
 require('prototype.spawn')();
 require('prototype.source')();
 require('prototype.container')();
@@ -8,44 +7,14 @@ require('prototype.storage')();
 require('prototype.resource')();
 require('prototype.creep')();
 
-var rolesRequire = {
-    upgrader: require('role.upgrader'),
-    miner: require('role.miner'),
-    builder: require('role.builder'),
-    scavanger: require('role.scavanger'),
-    repairer: require('role.repairer'),
-    transport: require('role.transport'),
-    longDistanceHarvester: require('role.longdistanceharvester'),
-    attacker: require('role.attacker'),
-    claimer: require('role.claimer'),
-    envoy: require('role.envoy')
-};
-
-var roles = [];
-
-for (var each in Object.keys(rolesRequire)) {
-    roles.push(each);
-}
+var roles = ["upgrader","miner","builder","scavanger","repairer","transport","claimer","attacker"];
 
 module.exports.loop = function () {
     customFunctions.cleanUp(); // Memory cleanup for dead creeps
     customFunctions.pollCreeps(); // Count living creeps
-<<<<<<< HEAD
-<<<<<<< HEAD
-    var roles = [];
-
-    for (var each in Object.keys(rolesRequire)) {
-        roles.push(each);
-    } // Cludgy - to get list of creep types from require array, beginning of cleanup
-
-=======
->>>>>>> parent of e254815... .
-=======
->>>>>>> parent of e254815... .
     var roomlist = customFunctions.getRooms(); // Get list of rooms with Spawns I control
     
     for (var eachroom in roomlist) {
-        customFunctions.roomInit(roomlist[eachroom]);
         console.log("Doing stuff for room: " + roomlist[eachroom]);
 
         var roomspawn = Game.getObjectById(Game.rooms[roomlist[eachroom]].memory.spawn);
