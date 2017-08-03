@@ -28,7 +28,8 @@ module.exports.loop = function () {
 
     for (var each in Object.keys(rolesRequire)) {
         roles.push(each);
-    }
+    } // Cludgy - to get list of creep types from require array, beginning of cleanup
+
     var roomlist = customFunctions.getRooms(); // Get list of rooms with Spawns I control
     
     for (var eachroom in roomlist) {
