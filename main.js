@@ -13,15 +13,14 @@ var rolesRequire = {
     envoy: require('role.envoy')
 };
 
-var roles = [];
-
-for (var each in Object.keys(rolesRequire)) {
-    roles.push(each);
-}
-
 module.exports.loop = function () {
     customFunctions.cleanUp(); // Memory cleanup for dead creeps
     customFunctions.pollCreeps(); // Count living creeps
+    var roles = [];
+
+    for (var each in Object.keys(rolesRequire)) {
+        roles.push(each);
+    }
     var roomlist = customFunctions.getRooms(); // Get list of rooms with Spawns I control
     
     for (var eachroom in roomlist) {
