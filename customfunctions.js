@@ -82,6 +82,7 @@ module.exports = {
             if (rooms.indexOf(Game.spawns[each].room.name) < 0) {
                 rooms.push(Game.spawns[each].room.name);
             }
+            Game.spawns[each].room.memory.spawn = Game.spawns[each].name;
         }
         return rooms;
     }
