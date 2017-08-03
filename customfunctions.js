@@ -26,7 +26,7 @@ module.exports = {
         var roles = [];
 
         for (var each in Object.keys(rolesRequire)) {
-            roles.push(each);
+            roles.push(rolesRequire[each]);
         } // Cludgy - to get list of creep types from require array, beginning of cleanup
         Game.rooms[room].memory.minCreeps = {};
         for (var name in roles) {
@@ -51,7 +51,7 @@ module.exports = {
         var roles = [];
 
         for (var each in Object.keys(rolesRequire)) {
-            roles.push(each);
+            roles.push(rolesRequire[each]);
         } // Cludgy - to get list of creep types from require array, beginning of cleanup
         var roomlist = require('customfunctions').getRooms(); 
         for (var each in roomlist) {
