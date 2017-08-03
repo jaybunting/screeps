@@ -1,13 +1,23 @@
 var roleTower = require('role.tower');
 var customFunctions = require('customfunctions');
-require('prototype.spawn')();
-require('prototype.source')();
-require('prototype.container')();
-require('prototype.storage')();
-require('prototype.resource')();
-require('prototype.creep')();
+var rolesRequire = {
+    upgrader: require('role.upgrader'),
+    miner: require('role.miner'),
+    builder: require('role.builder'),
+    scavanger: require('role.scavanger'),
+    repairer: require('role.repairer'),
+    transport: require('role.transport'),
+    longDistanceHarvester: require('role.longdistanceharvester'),
+    attacker: require('role.attacker'),
+    claimer: require('role.claimer'),
+    envoy: require('role.envoy')
+};
 
-var roles = ["upgrader","miner","builder","scavanger","repairer","transport","claimer","attacker"];
+var roles = [];
+
+for (var each in Object.keys(rolesRequire)) {
+    roles.push(each);
+}
 
 module.exports.loop = function () {
     customFunctions.cleanUp(); // Memory cleanup for dead creeps
