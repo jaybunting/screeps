@@ -2,7 +2,7 @@ var roleEnvoy = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        let flag = Game.flags.AttackFlag;
+        let flag = Game.flags.Claim;
         if (flag) {
             if (creep.pos.roomName === flag.pos.roomName) {
                        if (creep.memory.building && creep.carry.energy == 0) {

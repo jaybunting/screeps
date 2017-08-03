@@ -1,7 +1,7 @@
 var roleClaimer = {
      /** @param {Creep} creep **/
     run: function(creep) {
-        let flag = Game.flags.AttackFlag;
+        let flag = Game.flags.Claim;
         if (flag) {
             if (creep.pos.roomName === flag.pos.roomName) {
                  if (creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
