@@ -4,7 +4,7 @@ var roleClaimer = {
         let flag = Game.flags.Claim;
         if (flag) {
             if (creep.pos.roomName === flag.pos.roomName) {
-                 if (creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                 if (creep.claimController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(creep.room.controller);
                 }
             } else {
