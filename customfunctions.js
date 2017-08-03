@@ -9,7 +9,25 @@ module.exports = {
     },
 
     roomInit: function (room) {
-        var roles = ["upgrader","miner","builder","scavanger","repairer","transport","claimer"];
+
+        var rolesRequire = {
+            upgrader: require('role.upgrader'),
+            miner: require('role.miner'),
+            builder: require('role.builder'),
+            scavanger: require('role.scavanger'),
+            repairer: require('role.repairer'),
+            transport: require('role.transport'),
+            longDistanceHarvester: require('role.longdistanceharvester'),
+            attacker: require('role.attacker'),
+            claimer: require('role.claimer'),
+            envoy: require('role.envoy')
+        };
+
+        var roles = [];
+
+        for (var each in Object.keys(rolesRequire)) {
+            roles.push(each);
+        } // Cludgy - to get list of creep types from require array, beginning of cleanup
         Game.rooms[room].memory.minCreeps = {};
         for (var name in roles) {
             Game.rooms[room].memory.minCreeps[roles[name]] = 0;
@@ -17,7 +35,24 @@ module.exports = {
     },
 
     pollCreeps: function () {
-        var roles = ["upgrader","miner","builder","scavanger","repairer","transport","claimer","envoy"];
+        var rolesRequire = {
+            upgrader: require('role.upgrader'),
+            miner: require('role.miner'),
+            builder: require('role.builder'),
+            scavanger: require('role.scavanger'),
+            repairer: require('role.repairer'),
+            transport: require('role.transport'),
+            longDistanceHarvester: require('role.longdistanceharvester'),
+            attacker: require('role.attacker'),
+            claimer: require('role.claimer'),
+            envoy: require('role.envoy')
+        };
+
+        var roles = [];
+
+        for (var each in Object.keys(rolesRequire)) {
+            roles.push(each);
+        } // Cludgy - to get list of creep types from require array, beginning of cleanup
         var roomlist = require('customfunctions').getRooms(); 
         for (var each in roomlist) {
             Game.rooms[roomlist[each]].memory.activeCreeps = {};

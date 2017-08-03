@@ -33,6 +33,7 @@ module.exports.loop = function () {
     var roomlist = customFunctions.getRooms(); // Get list of rooms with Spawns I control
     
     for (var eachroom in roomlist) {
+        customFunctions.roomInit(roomlist[eachroom]);
         console.log("Doing stuff for room: " + roomlist[eachroom]);
 
         var roomspawn = Game.getObjectById(Game.rooms[roomlist[eachroom]].memory.spawn);
