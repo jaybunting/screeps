@@ -1,14 +1,17 @@
 var roleClaimer = {
-    /** @param {Creep} creep **/
+     /** @param {Creep} creep **/
     run: function(creep) {
-         // if in target room
-            if (creep.room.name == creep.memory.targetroom) {
-                if (creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+        let flag = Game.flags.AttackFlag;
+        if (flag) {
+            if (creep.pos.roomName === flag.pos.roomName) {
+                 if (creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(creep.room.controller);
                 }
             } else {
-                var exit = creep.room.findExitTo(creep.memory.targetroom);
+                var exit = creep.room.findExitTo(flag.pos.roomName);
                 creep.moveTo(creep.pos.findClosestByRange(exit), {visualizePathStyle: {stroke: '#ff0000'}});
+                // creep.moveTo(flag, {visualizePathStyle: {stroke: '#ff0000'}});
+                }
             }
         }
 };
