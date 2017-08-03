@@ -21,15 +21,24 @@ var rolesRequire = {
     envoy: require('role.envoy')
 };
 
+var roles = [];
+
+for (var each in Object.keys(rolesRequire)) {
+    roles.push(each);
+}
+
 module.exports.loop = function () {
     customFunctions.cleanUp(); // Memory cleanup for dead creeps
     customFunctions.pollCreeps(); // Count living creeps
+<<<<<<< HEAD
     var roles = [];
 
     for (var each in Object.keys(rolesRequire)) {
         roles.push(each);
     } // Cludgy - to get list of creep types from require array, beginning of cleanup
 
+=======
+>>>>>>> parent of e254815... .
     var roomlist = customFunctions.getRooms(); // Get list of rooms with Spawns I control
     
     for (var eachroom in roomlist) {
