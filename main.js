@@ -16,7 +16,7 @@ module.exports.loop = function () {
     
     for (var eachroom in roomlist) {
         console.log("Doing stuff for room: " + roomlist[eachroom]);
-        Game.getObjectById(Game.rooms[roomlist[eachroom]].id).memory.storage = Game.getObjectById(Game.rooms[roomlist[eachroom]]).room.find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_STORAGE);}});
+        Game.rooms[roomlist[eachroom]].memory.storage = Game.rooms[roomlist[eachroom]].find(FIND_STRUCTURES, { filter: (structure) => { return (structure.structureType == STRUCTURE_STORAGE);}});
 
         var roomspawn = Game.getObjectById(Game.rooms[roomlist[eachroom]].memory.spawn);
 
